@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState } from 'react';
+import Menu from './components/Menu';
+import Settings from './components/Settings';
+import { languageData } from './languageData';
+import './styles.css';
 
 function App() {
+  const [language, setLanguage] = useState('en'); // Default language is English
+  
+  const handleLanguageChange = (newLanguage) => {
+    setLanguage(newLanguage);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Settings onLanguageChange={handleLanguageChange} />
+      <Menu language={language} />
     </div>
   );
 }
